@@ -19,7 +19,9 @@ def home():
 def predict():
     try:
         # Extracting form data
+        print(request.form)
         data_dict = {key: float(value) for key, value in request.form.items()}
+        print(data_dict)
         query_df = pd.DataFrame([data_dict])
 
         # Make prediction

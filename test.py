@@ -1,19 +1,6 @@
 import requests
 
-url = "http://localhost:8000/predict"
-# data = {
-#     "age": 18393,
-#     "gender": 2,
-#     "height": 168,
-#     "weight": 62.0,
-#     "ap_hi": 110,
-#     "ap_lo": 80,
-#     "cholesterol": 1,
-#     "gluc": 1,
-#     "smoke": 0,
-#     "alco": 0,
-#     "active": 1,
-# }
+url = "https://cvd-o2ov.onrender.com/predict"
 
 data = {
     "age": "20228",
