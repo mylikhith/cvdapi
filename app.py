@@ -19,9 +19,9 @@ def home():
 def predict():
     try:
         # Extracting form data
-        print(request.form)
+        print("input", request.form)
         data_dict = {key: float(value) for key, value in request.form.items()}
-        print(data_dict)
+        print("data_dict", data_dict)
         query_df = pd.DataFrame([data_dict])
 
         # Make prediction
@@ -29,6 +29,7 @@ def predict():
 
         # Ensure output is in a serializable format
         prediction_list = prediction.tolist()
+        print("prediction_list", prediction_list)
         return jsonify({"prediction": prediction_list})
     except Exception as e:
         return jsonify({"error": str(e)})
