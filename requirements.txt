@@ -2,4 +2,5 @@ Flask
 lightgbm
 numpy
 pandas
+gunicorn
 scikit-learn==1.2.2
