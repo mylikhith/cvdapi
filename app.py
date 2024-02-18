@@ -30,7 +30,3 @@ def predict():
         return jsonify({"prediction": prediction_list})
     except Exception as e:
         return jsonify({"error": str(e)})
-
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
