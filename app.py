@@ -15,21 +15,39 @@ def home():
     return "Welcome to the Cardiovascular Disease Prediction API!"
 
 
+EXPECTED_COLUMNS = [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+]
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
         # Extracting form data
-        print("input", request.form)
         data_dict = {key: float(value) for key, value in request.form.items()}
-        print("data_dict", data_dict)
-        query_df = pd.DataFrame([data_dict])
+
+        # Create DataFrame ensuring the column order
+        query_df = pd.DataFrame([data_dict], columns=EXPECTED_COLUMNS)
+
+        # Optional: Print to verify the DataFrame's column order for debugging
+        print(query_df)
 
         # Make prediction
         prediction = model.predict(query_df)
 
         # Ensure output is in a serializable format
         prediction_list = prediction.tolist()
-        print("prediction_list", prediction_list)
+
         return jsonify({"prediction": prediction_list})
     except Exception as e:
         return jsonify({"error": str(e)})
