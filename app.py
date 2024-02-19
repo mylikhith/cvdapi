@@ -6,8 +6,13 @@ app = Flask(__name__)
 
 # Load the trained LightGBM model
 model_filename = "heart_predict.pkl"
+model_filename_1 = "model_lgbm_optimized"
+
 with open(model_filename, "rb") as file:
     model = pickle.load(file)
+
+with open(model_filename_1, "rb") as file:
+    model_1 = pickle.load(file)
 
 
 @app.route("/", methods=["GET"])
@@ -47,22 +52,22 @@ EXPECTED_COLUMNS = [
     "thal",
 ]
 
-# EXPECTED_COLUMNS = [
-#     "age",
-#     "gender",
-#     "height",
-#     "weight",
-#     "ap_hi",
-#     "ap_lo",
-#     "cholesterol",
-#     "gluc",
-#     "smoke",
-#     "alco",
-#     "active",
-# ]
+EXPECTED_COLUMNS_1 = [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+]
 
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict1", methods=["POST"])
 def predict():
     try:
         # Extracting form data
@@ -76,6 +81,29 @@ def predict():
 
         # Make prediction
         prediction = model.predict(query_df)
+
+        # Ensure output is in a serializable format
+        prediction_list = prediction.tolist()
+
+        return jsonify({"prediction": prediction_list})
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+
+@app.route("/predict", methods=["POST"])
+def predict1():
+    try:
+        # Extracting form data
+        data_dict = {key: float(value) for key, value in request.form.items()}
+
+        # Create DataFrame ensuring the column order
+        query_df = pd.DataFrame([data_dict], columns=EXPECTED_COLUMNS_1)
+
+        # Optional: Print to verify the DataFrame's column order for debugging
+        print(query_df)
+
+        # Make prediction
+        prediction = model_1.predict(query_df)
 
         # Ensure output is in a serializable format
         prediction_list = prediction.tolist()

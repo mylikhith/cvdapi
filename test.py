@@ -1,6 +1,6 @@
 import requests
 
-url = "http://127.0.0.1:5000/predict"
+url = "https://cvd-o2ov.onrender.com/predict"
 # data = {
 #     "age": 18393,
 #     "gender": 2,
@@ -97,21 +97,21 @@ data = {
 
 # 54	1	0	120	188	0	1	113	0	1.4	1	1	3	0
 
-data = {
-    "age": "54",
-    "sex": "1",
-    "cp": "0",
-    "trestbps": "120",
-    "chol": "188",
-    "fbs": "0",
-    "restecg": "1",
-    "thalach": "113",
-    "exang": "0",
-    "oldpeak": "1.4",
-    "slope": "1",
-    "ca": "1",
-    "thal": "3",
-}
+# data = {
+#     "age": "54",
+#     "sex": "1",
+#     "cp": "0",
+#     "trestbps": "120",
+#     "chol": "188",
+#     "fbs": "0",
+#     "restecg": "1",
+#     "thalach": "113",
+#     "exang": "0",
+#     "oldpeak": "1.4",
+#     "slope": "1",
+#     "ca": "1",
+#     "thal": "3",
+# }
 
 
 # data = {
