@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load the trained LightGBM model
 model_filename = "heart_predict.pkl"
-model_filename_1 = "model_lgbm_optimized"
+model_filename_1 = "model_lgbm_optimized.pkl"
 
 with open(model_filename, "rb") as file:
     model = pickle.load(file)
