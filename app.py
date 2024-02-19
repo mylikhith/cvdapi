@@ -5,7 +5,7 @@ import pickle
 app = Flask(__name__)
 
 # Load the trained LightGBM model
-model_filename = "model_lgbm_optimized.pkl"
+model_filename = "heart_predict.pkl"
 with open(model_filename, "rb") as file:
     model = pickle.load(file)
 
@@ -15,19 +15,51 @@ def home():
     return "Welcome to the Cardiovascular Disease Prediction API!"
 
 
+# data = {
+#     "age": "59",
+#     "sex": "1",
+#     "cp": "1",
+#     "trestbps": "140",
+#     "chol": "221",
+#     "fbs": "0",
+#     "restecg": "1",
+#     "thalach": "164",
+#     "exang": "1",
+#     "oldpeak": "0.0",
+#     "slope": "2",
+#     "ca": "0",
+#     "thal": "2",
+# }
+
 EXPECTED_COLUMNS = [
     "age",
-    "gender",
-    "height",
-    "weight",
-    "ap_hi",
-    "ap_lo",
-    "cholesterol",
-    "gluc",
-    "smoke",
-    "alco",
-    "active",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal",
 ]
+
+# EXPECTED_COLUMNS = [
+#     "age",
+#     "gender",
+#     "height",
+#     "weight",
+#     "ap_hi",
+#     "ap_lo",
+#     "cholesterol",
+#     "gluc",
+#     "smoke",
+#     "alco",
+#     "active",
+# ]
 
 
 @app.route("/predict", methods=["POST"])

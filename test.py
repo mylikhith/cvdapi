@@ -29,19 +29,104 @@ url = "http://127.0.0.1:5000/predict"
 #     "active": "1",
 # }
 
+# "age",
+#     "gender",  # Assuming "gender" corresponds to "sex"
+#     "cp",
+#     "trestbps",
+#     "chol",
+#     "fbs",
+#     "restecg",
+#     "thalach",
+#     "exang",
+#     "oldpeak",
+#     "slope",
+#     "ca",
+#     "thal",
+#     "target"
+
 data = {
-    "sbp": "140",
-    "alcohol": "0",
-    "glucose": "1",
-    "dbp": "90",
-    "gender": "1",
-    "activity": "1",
-    "smoking": "0",
-    "weight": "85",
-    "cholesterol": "3",
-    "age": "20228",
-    "height": "156",
+    "age": "59",
+    "sex": "1",
+    "cp": "1",
+    "trestbps": "140",
+    "chol": "221",
+    "fbs": "0",
+    "restecg": "1",
+    "thalach": "164",
+    "exang": "1",
+    "oldpeak": "0.0",
+    "slope": "2",
+    "ca": "0",
+    "thal": "2",
 }
+# 60	1	0	125	258	0	0	141	1	2.8	1	1	3	0
+
+data = {
+    "age": "60",
+    "sex": "1",
+    "cp": "0",
+    "trestbps": "125",
+    "chol": "258",
+    "fbs": "0",
+    "restecg": "0",
+    "thalach": "141",
+    "exang": "1",
+    "oldpeak": "2.8",
+    "slope": "1",
+    "ca": "1",
+    "thal": "3",
+}
+
+# 50	0	0	110	254	0	0	159	0	0.0	2	0	2	1
+
+data = {
+    "age": "50",
+    "sex": "0",
+    "cp": "0",
+    "trestbps": "110",
+    "chol": "254",
+    "fbs": "0",
+    "restecg": "0",
+    "thalach": "159",
+    "exang": "0",
+    "oldpeak": "0",
+    "slope": "2",
+    "ca": "0",
+    "thal": "2",
+}
+
+# 54	1	0	120	188	0	1	113	0	1.4	1	1	3	0
+
+data = {
+    "age": "54",
+    "sex": "1",
+    "cp": "0",
+    "trestbps": "120",
+    "chol": "188",
+    "fbs": "0",
+    "restecg": "1",
+    "thalach": "113",
+    "exang": "0",
+    "oldpeak": "1.4",
+    "slope": "1",
+    "ca": "1",
+    "thal": "3",
+}
+
+
+# data = {
+#     "sbp": "140",
+#     "alcohol": "0",
+#     "glucose": "1",
+#     "dbp": "90",
+#     "gender": "1",
+#     "activity": "1",
+#     "smoking": "0",
+#     "weight": "85",
+#     "cholesterol": "3",
+#     "age": "20228",
+#     "height": "156",
+# }
 
 response = requests.post(url, data=data)
 print(response.json())
